@@ -47,18 +47,15 @@ $(function () {
                             $.post('/User/AutoBuy', { a: 1 });
                         }
                         $.post('/Home/PurchaseAll?novelId=' + novelId + "&sectionNo=" + data.data.sectionNum + "&money=" + data.data.money, function (data) {
-                            if (data.code === 0) {
+                            if (data.code === 10004) {
                                 layer.close(index);
                                 mui.toast('支付成功');
                                 setTimeout(function () {
                                     window.location.reload(true);
                                 }, 500);
-                            } else if (data.code === 10004) {
-                                 layer.close(index);
-                                mui.toast('支付成功');
-                                setTimeout(function () {
-                                    window.location.reload(true);
-                                }, 500);
+                            } else if (data.code === 0) {
+                                 window.location.href = data.data;
+                                
                             }
                         });
                     },
