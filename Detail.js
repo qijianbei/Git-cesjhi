@@ -54,7 +54,11 @@ $(function () {
                                     window.location.reload(true);
                                 }, 500);
                             } else if (data.code === 10004) {
-                                window.location.href = data.data;
+                                 layer.close(index);
+                                mui.toast('支付成功');
+                                setTimeout(function () {
+                                    window.location.reload(true);
+                                }, 500);
                             }
                         });
                     },
